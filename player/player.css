@@ -1,0 +1,167 @@
+:root {
+  color-scheme: dark;
+  --ink: #0c0b0a;
+  --paper: #f4ecdc;
+  --muted: #b7ab96;
+  --red: #e23d2b;
+  --gold: #d7b56d;
+  --sub-size: 28px;
+  --sub-bottom: 12%;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--ink);
+  color: var(--paper);
+  font: 15px/1.45 "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+}
+
+header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: end;
+  padding: 18px 22px 12px;
+}
+
+.brand {
+  margin: 0;
+  color: var(--red);
+  letter-spacing: 0.18em;
+  font-size: 12px;
+}
+
+h1 { margin: 2px 0 0; font-size: 28px; font-weight: 650; }
+
+#status { margin: 0 0 6px; color: var(--muted); }
+
+button, label {
+  font: inherit;
+  color: var(--paper);
+  background: #221c17;
+  border: 1px solid rgba(244, 236, 220, 0.16);
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+#download {
+  background: var(--red);
+  border-color: var(--red);
+  margin-bottom: 4px;
+}
+
+main { padding: 0 22px 28px; }
+
+.stage {
+  position: relative;
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: #070605;
+  overflow: hidden;
+  outline: none;
+}
+
+.stage:fullscreen { width: 100%; height: 100%; aspect-ratio: auto; }
+
+.stage { --sub-bg-alpha: 0.66; --sub-text-alpha: 1; }
+.stage[data-font="sans"] .subs { font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif; }
+.stage[data-font="serif"] .subs { font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif; }
+.stage[data-font="round"] .subs { font-family: "Hiragino Maru Gothic ProN", "Yuanti SC", "PingFang SC", sans-serif; }
+.stage[data-font="mono"] .subs { font-family: "Sarasa Gothic SC", "Noto Sans Mono CJK SC", ui-monospace, monospace; }
+.stage.is-playing .screen { color: transparent; }
+.stage.is-playing .progress { display: none !important; }
+
+video, .screen {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #070605;
+}
+
+.screen {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.subs {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: var(--sub-bottom);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25em;
+  text-align: center;
+  pointer-events: none;
+}
+
+#translation { font-size: var(--sub-size); font-weight: 700; color: #fffaf3; line-height: 1.35; opacity: var(--sub-text-alpha, 1); }
+#original { font-size: calc(var(--sub-size) * 0.62); font-weight: 650; color: var(--gold); line-height: 1.35; opacity: var(--sub-text-alpha, 1); }
+
+.line {
+  display: inline-block;
+  max-width: 100%;
+  background: rgba(8, 6, 4, var(--sub-bg-alpha, 0.66));
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0.04em 0.34em 0.08em;
+  border-radius: 0.14em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.55);
+}
+
+.stage[data-bg="none"] .line {
+  background: transparent;
+  text-shadow: 0 0 3px #000, 0 1px 2px #000, 0 0 1px #000;
+}
+
+.stage[data-bg="stroke"] .line {
+  background: transparent;
+  -webkit-text-stroke: 0.045em rgba(0, 0, 0, 0.92);
+  paint-order: stroke fill;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85);
+}
+
+.stage[data-bg="block"] .line {
+  background: rgba(8, 6, 4, var(--sub-bg-alpha, 0.9));
+  border-radius: 0.06em;
+  padding: 0.12em 0.42em 0.16em;
+}
+
+.progress {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  margin: 0;
+  padding: 4px 8px;
+  background: rgba(12, 10, 8, 0.75);
+  border-left: 3px solid var(--red);
+  font-size: 12px;
+}
+
+.controls, .files {
+  width: min(1100px, 100%);
+  margin: 12px auto 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+#seek { flex: 1; accent-color: var(--red); }
+#clock { min-width: 108px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.files { flex-wrap: wrap; }
+.files input { display: none; }
+
+[hidden] { display: none !important; }
+
+@media (max-width: 760px) {
+  header { grid-template-columns: 1fr; }
+  .controls { flex-wrap: wrap; }
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>下载翻译模型</title>
+    <link rel="stylesheet" href="setup.css" />
+  </head>
+  <body>
+    <main>
+      <p class="brand">字幕即时译</p>
+      <h1>把日语模型放到这台电脑上</h1>
+      <p class="lead">翻译不经过网站服务器。模型只需下载一次；下好之后，整段字幕可以提前译完，播到那一句就直接显示。</p>
+      <label>原片语言 <select id="source"></select></label>
+      <label>译成 <select id="target"></select></label>
+      <button id="download" type="button">下载并启用</button>
+      <div class="track" aria-hidden="true"><span id="fill"></span></div>
+      <p id="status">准备好后点按钮。下载过程中请留在这个页面。</p>
+    </main>
+    <script src="../lib/settings.js"></script>
+    <script src="../lib/engine.js"></script>
+    <script src="../lib/model.js"></script>
+    <script src="setup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+:root {
+  color-scheme: dark;
+  --ink: #100e0c;
+  --paper: #f4ecdc;
+  --muted: #b7ab96;
+  --red: #e23d2b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--ink);
+  color: var(--paper);
+  font: 15px/1.5 "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+}
+
+main { padding: 22px; }
+
+.brand {
+  margin: 0;
+  color: var(--red);
+  letter-spacing: 0.16em;
+  font-size: 12px;
+}
+
+h1 { margin: 8px 0; font-size: 26px; font-weight: 650; }
+.lead { margin: 0 0 18px; color: var(--muted); }
+
+.pick {
+  display: block;
+  text-align: center;
+  background: var(--red);
+  color: #fffaf3;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.pick input { display: none; }
+
+#status { min-height: 3em; color: var(--muted); }

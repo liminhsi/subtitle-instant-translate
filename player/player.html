@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>本地放映</title>
+    <link rel="stylesheet" href="player.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <p class="brand">字幕即时译</p>
+        <h1>本地放映</h1>
+      </div>
+      <p id="status">正在连接模型…</p>
+      <button id="download" type="button">下载翻译模型</button>
+    </header>
+    <main>
+      <section id="stage" class="stage" tabindex="0">
+        <video id="video" playsinline hidden></video>
+        <div id="screen" class="screen">把视频和字幕拖到这里</div>
+        <div id="subs" class="subs">
+          <div id="original"></div>
+          <div id="translation"></div>
+        </div>
+        <p id="progress" class="progress" hidden></p>
+      </section>
+      <div class="controls">
+        <button id="play" type="button">播放</button>
+        <input id="seek" type="range" min="0" max="0" step="0.1" value="0" />
+        <span id="clock">00:00 / 00:00</span>
+        <button id="sooner" type="button">字幕提前</button>
+        <button id="later" type="button">字幕延后</button>
+        <button id="fullscreen" type="button">全屏</button>
+      </div>
+      <div class="files">
+        <label>选择视频<input id="video-file" type="file" accept="video/mp4,video/webm,video/quicktime,.mp4,.webm,.m4v,.mov" /></label>
+        <label>上传 SRT<input id="sub-file" type="file" accept=".srt,.vtt,.ass,.ssa,.txt,text/plain" /></label>
+        <button id="demo" type="button">播放示例字幕</button>
+      </div>
+    </main>
+    <script src="../lib/settings.js"></script>
+    <script src="../lib/subs.js"></script>
+    <script src="../lib/engine.js"></script>
+    <script src="../lib/model.js"></script>
+    <script src="../lib/style.js"></script>
+    <script src="../lib/translate-client.js"></script>
+    <script src="player.js"></script>
+  </body>
+</html>

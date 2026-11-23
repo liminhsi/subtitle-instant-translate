@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>上传 SRT</title>
+    <link rel="stylesheet" href="upload.css" />
+  </head>
+  <body>
+    <main>
+      <p class="brand">字幕即时译</p>
+      <h1>上传本地 SRT</h1>
+      <p class="lead">字幕会套到刚才那个视频上，并按时间轴提前翻译。支持 UTF-8、UTF-16 和日文 Shift_JIS。</p>
+      <label class="pick">
+        选择 SRT 文件
+        <input id="file" type="file" accept=".srt,.vtt,.ass,.ssa,text/plain" />
+      </label>
+      <p id="status">还没有选择文件。</p>
+    </main>
+    <script src="../lib/subs.js"></script>
+    <script src="upload.js"></script>
+  </body>
+</html>

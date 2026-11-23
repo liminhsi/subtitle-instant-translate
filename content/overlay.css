@@ -1,0 +1,167 @@
+:host {
+  position: fixed;
+  z-index: 2147483646;
+  pointer-events: none;
+  display: block;
+  contain: layout style;
+  --sub-bg-alpha: 0.66;
+  --sub-text-alpha: 1;
+}
+
+:host([data-font="sans"]) .root { font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Source Han Sans SC", sans-serif; }
+:host([data-font="serif"]) .root { font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif; }
+:host([data-font="round"]) .root { font-family: "Hiragino Maru Gothic ProN", "Yuanti SC", "PingFang SC", sans-serif; }
+:host([data-font="mono"]) .root { font-family: "Sarasa Gothic SC", "Noto Sans Mono CJK SC", ui-monospace, monospace; }
+
+:host(.playing) .status,
+:host(.playing) .pill,
+:host(.playing) .upload {
+  visibility: hidden;
+}
+
+:host(.playing) .upload.visible {
+  visibility: visible;
+}
+
+.root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Source Han Sans SC", sans-serif;
+}
+
+.stack {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  bottom: var(--sub-bottom, 12%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.22em;
+  text-align: center;
+}
+
+.translation {
+  font-size: var(--sub-size, 28px);
+  color: #fffaf3;
+  font-weight: 700;
+  line-height: 1.35;
+  opacity: var(--sub-text-alpha, 1);
+}
+
+.original {
+  font-size: calc(var(--sub-size, 28px) * 0.62);
+  color: #f0d48a;
+  font-weight: 650;
+  line-height: 1.35;
+  opacity: var(--sub-text-alpha, 1);
+}
+
+.line {
+  display: inline-block;
+  max-width: 100%;
+  background: rgba(8, 6, 4, var(--sub-bg-alpha, 0.66));
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0.04em 0.34em 0.08em;
+  border-radius: 0.14em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.55);
+}
+
+:host([data-bg="none"]) .line {
+  background: transparent;
+  text-shadow: 0 0 3px #000, 0 1px 2px #000, 0 0 1px #000;
+}
+
+:host([data-bg="stroke"]) .line {
+  background: transparent;
+  -webkit-text-stroke: 0.045em rgba(0, 0, 0, 0.92);
+  paint-order: stroke fill;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85);
+}
+
+:host([data-bg="block"]) .line {
+  background: rgba(8, 6, 4, var(--sub-bg-alpha, 0.9));
+  border-radius: 0.06em;
+  padding: 0.12em 0.42em 0.16em;
+}
+
+.status {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #f4ecdc;
+  background: rgba(12, 10, 8, 0.72);
+  border-left: 3px solid #e23d2b;
+  padding: 4px 8px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.pill {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  max-width: min(560px, 86%);
+  pointer-events: auto;
+  color: #f4ecdc;
+  background: rgba(16, 12, 10, 0.88);
+  border: 1px solid rgba(226, 61, 43, 0.7);
+  padding: 8px 10px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.upload {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  pointer-events: auto;
+  opacity: 0;
+}
+
+.upload.visible,
+.upload:hover,
+.upload:focus-within {
+  opacity: 1;
+}
+
+.upload button,
+.upload .drop {
+  pointer-events: auto;
+  cursor: pointer;
+  border: 0;
+  background: rgba(16, 12, 10, 0.9);
+  color: #f4ecdc;
+  border-left: 3px solid #e23d2b;
+  padding: 5px 8px;
+  font: 12px/1.3 "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+}
+
+.upload .drop {
+  cursor: default;
+  border-left-color: #d7b56d;
+}
+
+.pill button {
+  pointer-events: auto;
+  cursor: pointer;
+  flex: none;
+  border: 0;
+  background: #e23d2b;
+  color: #fffaf3;
+  padding: 6px 10px;
+  font: inherit;
+}
+
+[hidden] {
+  display: none !important;
+}
